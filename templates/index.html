@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>My First Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart" id="bargraph">
+                <script>
+                    var graphs = {{plot | safe}};
+                    Plotly.plot('bargraph',graphs,{});
+                </script>
+            </div>
+        </div>
+        
+    <form action = "/" method = "POST"> 
+        <div class="form-row align-items-center">
+
+            <div class="col-sm-3 my-1">
+                <label class="sr-only" for="inlineFormInputGroupUsername">[ohm]</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">R</div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="[ohms]" name = "R_text">
+                </div>
+            </div>
+            
+            <div class="col-sm-3 my-1">
+                <label class="sr-only" for="inlineFormInputGroupUsername">[H]</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">L</div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="[H]" name = "L_text">
+                </div>
+            </div>
+            
+            <div class="col-sm-3 my-1">
+                <label class="sr-only" for="inlineFormInputGroupUsername">[F]</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">F</div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="[F]" name = "C_text">
+                </div>
+            </div>
+            
+            <div class="col-sm-3 my-1">
+                <label class="sr-only" for="inlineFormInputGroupUsername">Xen</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Xen</div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="[V]/[I]" name = "Xen_text">
+                </div>
+            </div>
+            
+        </div>
+        <div class="form-row align-items-center">
+            
+            <div class="col-sm-3 my-1">
+                <label class="sr-only" for="inlineFormInputGroupUsername">Vo</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Vo</div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="[V]" name = "Vo_text">
+                </div>
+            </div>
+            
+            <div class="col-sm-3 my-1">
+                <label class="sr-only" for="inlineFormInputGroupUsername">Io</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Io</div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="[I]" name = "Io_text">
+                </div>
+            </div>
+            
+            <div class="col-sm-3 my-1">
+                <label class="sr-only" for="inlineFormInputGroupUsername">xmax</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">xmax</div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="[s]" name = "xmax_text">
+                </div>
+            </div>
+            
+
+        </div>
+        <div class="form-row align-items-center">
+            <div class="col-sm-3 my-1">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="autoSizingCheck2" name="RLC_sel" value = "1">
+                    <label class="form-check-label" for="autoSizingCheck2">
+                    ¿ RLC serie ?
+                    </label>
+                </div>
+            </div>
+            
+            <div class="col-sm-3 my-1">
+                <h4><span class="badge badge-secondary">f(t)</span></h4>
+            </div>
+            
+        </div>
+        
+        <div class="form-row align-items-center">
+            
+            <div class="col-sm-3 my-1">
+                <button type="submit" class="btn btn-primary">Calcular</button>
+            </div>
+            
+            <div class="col-sm-3 my-1">
+                <h4><span class="badge badge-secondary">{{funcion}}</span></h4>
+            </div>
+            
+        </div>
+    </form>
+    </div>
+</div>
+</body>
+</html>
