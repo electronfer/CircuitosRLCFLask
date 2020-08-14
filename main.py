@@ -165,33 +165,60 @@ def create_plot( xmax = float(10) , R = float(1) , L = float(1) , C = float(0.25
 
     graphJSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
 
-    return graphJSON, f_t
+    return graphJSON, f_t, vble_analisis
 
 app = Flask(__name__)
 
 @app.route('/', methods = ['POST', 'GET'])
 def index():
-    if request.method == 'POST': 
-        mR = float(request.form['R_text'])
-        mL = float(request.form['L_text'])
-        mC = float(request.form['C_text'])
+    
+    if request.method == 'POST':
+        try:
+            mXmax = float(request.form['xmax_text'])
+        except:
+            mXmax = 10
+            
+        try:
+            mR = float(request.form['R_text'])
+        except:
+            mR = float(1)
         
-        mVo = float(request.form['Vo_text'])
-        mIo = float(request.form['Io_text'])
-        mXen = float(request.form['Xen_text'])
-        mXmax = float(request.form['xmax_text'])
+        try:
+            mL = float(request.form['L_text'])
+        except:
+            mL = float(1)
+            
+        try:
+            mC = float(request.form['C_text'])
+        except:
+            mC = float(0.25)
+        
+        try:
+            mVo = float(request.form['Vo_text'])            
+        except:
+            mVo = float(12)
+        
+        try:
+            mIo = float(request.form['Io_text'])
+        except:
+            mIo = float(12)
+        
+        try:
+            mXen = float(request.form['Xen_text'])
+        except:
+            mXen = float(24)
+        
         try:
             mRLC_sel = float(request.form['RLC_sel'])
         except:
             mRLC_sel = float(0)
             
-        print("selector: [{}]".format(mRLC_sel))
-        bar, f_t = create_plot( mXmax , mR , mL , mC , mVo , mIo , mXen, mRLC_sel )
+        bar, f_t, vbleAnalisis = create_plot( mXmax , mR , mL , mC , mVo , mIo , mXen, mRLC_sel )
         
     else:
-        bar, f_t = create_plot()
+        bar, f_t, vbleAnalisis = create_plot()
         
-    return render_template('index.html', plot=bar, funcion=f_t)
+    return render_template('index.html', plot=bar, funcion=f_t, variable = vbleAnalisis)
 
 if __name__ == '__main__':
     app.run(debug=True)

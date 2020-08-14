@@ -14,6 +14,12 @@
 </head>
 <body>
 <div class="container">
+    <div class="alert alert-success" role="alert">
+      <h4 class="alert-heading">Bienvenido!</h4>
+      <p>Este simulador permite entregar la solución en el tiempo de circuitos eléctricos RLC en sus configuraciones serie o paralelo. Recuerda ingresar todos los parámetros requeridos para que tengas una simulación exitosa.</p>
+      <hr>
+      <p class="mb-0">Para ingresar los parámetros, las unidades deben estar en notación exponencial. Por ejemplo, si queremos establecer la capacitancia en 10mF, se debe escribir en el campo respectivo 10e-3.</p>
+    </div>
     <div class="row">
         <div class="col-md-12">
             <div class="chart" id="bargraph">
@@ -51,7 +57,7 @@
                 <label class="sr-only" for="inlineFormInputGroupUsername">[F]</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <div class="input-group-text">F</div>
+                        <div class="input-group-text">C</div>
                     </div>
                     <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="[F]" name = "C_text">
                 </div>
@@ -94,7 +100,7 @@
                 <label class="sr-only" for="inlineFormInputGroupUsername">xmax</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <div class="input-group-text">xmax</div>
+                        <div class="input-group-text">t max sim</div>
                     </div>
                     <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="[s]" name = "xmax_text">
                 </div>
@@ -107,13 +113,13 @@
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="autoSizingCheck2" name="RLC_sel" value = "1">
                     <label class="form-check-label" for="autoSizingCheck2">
-                    ¿ RLC serie ?
+                    Seleccione para RLC serie
                     </label>
                 </div>
             </div>
             
             <div class="col-sm-3 my-1">
-                <h4><span class="badge badge-secondary">f(t)</span></h4>
+                <h4><span class="badge badge-secondary">{{variable}}</span></h4>
             </div>
             
         </div>
