@@ -4,3 +4,4 @@ sympy
 pandas
 flask
 plotly
+gunicorn
